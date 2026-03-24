@@ -1,57 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <link rel="stylesheet" href="bootstrap.min.css">
-    <script src="bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="fontawesome-free-7.1.0-web/js/all.js">
-    <link rel="stylesheet" href="fontawesome-free-7.1.0-web/css/all.css">
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- FontAwesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
 </head>
 
 <body>
-    <!-- Calculator -->
-    <h1 style="text-align: center;">Calculator</h1>
-    <div class="container" style="border: 2px solid black; width: 350px; background-color: grey;">
-        <i class="fa-solid fa-compress"></i>
 
-        <div class="up" style="width: 800px; height: 100px;">
-            <input type="text" id="ans" style="width: 330px; height: 90px; border: 1px solid black;">
+<h1>Calculator</h1>
 
-        </div>
-        <i class="fa-solid fa-clock-rotate-left"></i>
-        <div class="down">
-            <button style="margin: 20px; box-shadow: 0px 2px 3px 0px; border: 2px solid black; border-radius: 30px; background-color: antiquewhite;" onclick="document.getElementById('ans').value = ''">AC</button>
-            <button style="margin: 20px; box-shadow: 0px 2px 3px 0px; border: 2px solid black; border-radius: 30px; background-color: antiquewhite;" onclick="document.getElementById('ans').value = ''"><i class="fa-solid fa-delete-left"></i></button>
-            <button style="margin: 20px; box-shadow: 0px 2px 3px 0px; border: 2px solid black; border-radius: 30px; background-color: antiquewhite;" onclick="document.getElementById('ans').value += '+/-'"><i class="fa-solid fa-plus-minus"></i></button>
-            <button style="margin: 20px; box-shadow: 0px 2px 3px 0px; border: 2px solid black; border-radius: 30px; background-color: antiquewhite;" onclick="document.getElementById('ans').value += '/'"><i class="fa-solid fa-divide"></i></button>
-            <br>
-            <button style="margin: 20px; box-shadow: 0px 2px 3px 0px; border: 2px solid black; border-radius: 30px;" onclick="document.getElementById('ans').value += '7'"><i class="fa-solid fa-7"></i></button>
-            <button style="margin: 20px; box-shadow: 0px 2px 3px 0px; border: 2px solid black; border-radius: 30px;" onclick="document.getElementById('ans').value += '8'"><i class="fa-solid fa-8"></i></button>
-            <button style="margin: 20px; box-shadow: 0px 2px 3px 0px; border: 2px solid black; border-radius: 30px;" onclick="document.getElementById('ans').value += '9'"><i class="fa-solid fa-9"></i></button>
-            <button style="margin: 20px; box-shadow: 0px 2px 3px 0px; border: 2px solid black; border-radius: 30px; background-color: antiquewhite;" onclick="document.getElementById('ans').value += '*'"><i class="fa-solid fa-x"></i></button>
-            <br>
-            <button style="margin: 20px; box-shadow: 0px 2px 3px 0px; border: 2px solid black; border-radius: 30px;" onclick="document.getElementById('ans').value += '4'"><i class="fa-solid fa-4"></i></button>
-            <button style="margin: 20px; box-shadow: 0px 2px 3px 0px; border: 2px solid black; border-radius: 30px;" onclick="document.getElementById('ans').value += '5'"><i class="fa-solid fa-5"></i></button>
-            <button style="margin: 20px; box-shadow: 0px 2px 3px 0px; border: 2px solid black; border-radius: 30px;" onclick="document.getElementById('ans').value += '6'"><i class="fa-solid fa-6"></i></button>
-            <button style="margin: 20px; box-shadow: 0px 2px 3px 0px; border: 2px solid black; border-radius: 30px; background-color: antiquewhite;" onclick="document.getElementById('ans').value += '-'"><i class="fa-solid fa-minus"></i></button>
-            <br>
-            <button style="margin: 20px; box-shadow: 0px 2px 3px 0px; border: 2px solid black; border-radius: 30px;" onclick="document.getElementById('ans').value += '1'"><i class="fa-solid fa-1"></i></button>
-            <button style="margin: 20px; box-shadow: 0px 2px 3px 0px; border: 2px solid black; border-radius: 30px;" onclick="document.getElementById('ans').value += '2'"><i class="fa-solid fa-2"></i></button>
-            <button style="margin: 20px; box-shadow: 0px 2px 3px 0px; border: 2px solid black; border-radius: 30px;" onclick="document.getElementById('ans').value += '3'"><i class="fa-solid fa-3"></i></button>
-            <button style="margin: 20px; box-shadow: 0px 2px 3px 0px; border: 2px solid black; border-radius: 30px; background-color: antiquewhite;" onclick="document.getElementById('ans').value += '+'"><i class="fa-solid fa-plus"></i></button>
-            <br>
-            <button style="margin: 20px; box-shadow: 0px 2px 3px 0px; border: 2px solid black; border-radius: 30px; background-color: antiquewhite;" onclick="document.getElementById('ans').value += '%'"><i class="fa-solid fa-percent"></i></button>
-            <button style="margin: 20px; box-shadow: 0px 2px 3px 0px; border: 2px solid black; border-radius: 30px;" onclick="document.getElementById('ans').value += '0'"><i class="fa-solid fa-0"></i></button>
-            <button style="margin: 20px; box-shadow: 0px 2px 3px 0px; border: 2px solid black; border-radius: 30px; width: 35px;" onclick="document.getElementById('ans').value += '.'"><b>.</b></button>
-            <button style="margin: 20px; box-shadow: 0px 2px 3px 0px; border: 2px solid black; border-radius: 30px; background-color: antiquewhite;" onclick="Calculate()"><i class="fa-solid fa-equals"></i></button>
-        </div>
+<div class="calculator">
+
+    <input type="text" id="ans" readonly>
+
+    <div class="buttons">
+
+        <button onclick="clearDisplay()">AC</button>
+        <button onclick="deleteLast()"><i class="fa-solid fa-delete-left"></i></button>
+        <button onclick="appendValue('%')">%</button>
+        <button onclick="appendValue('/')">÷</button>
+
+        <button onclick="appendValue('7')">7</button>
+        <button onclick="appendValue('8')">8</button>
+        <button onclick="appendValue('9')">9</button>
+        <button onclick="appendValue('*')">×</button>
+
+        <button onclick="appendValue('4')">4</button>
+        <button onclick="appendValue('5')">5</button>
+        <button onclick="appendValue('6')">6</button>
+        <button onclick="appendValue('-')">−</button>
+
+        <button onclick="appendValue('1')">1</button>
+        <button onclick="appendValue('2')">2</button>
+        <button onclick="appendValue('3')">3</button>
+        <button onclick="appendValue('+')">+</button>
+
+        <button onclick="appendValue('0')" class="zero">0</button>
+        <button onclick="appendValue('.')">.</button>
+        <button onclick="calculate()" class="equal">=</button>
+
     </div>
-    <script>
-        function Calculate(){
-            var expression=document.getElementById('ans').value;
-            document.getElementById("ans").value = eval(expression);
-        }
-    </script>
-</body>
+</div>
 
+<script>
+    function appendValue(value) {
+    document.getElementById("ans").value += value;
+}
+
+function clearDisplay() {
+    document.getElementById("ans").value = "";
+}
+
+function deleteLast() {
+    let current = document.getElementById("ans").value;
+    document.getElementById("ans").value = current.slice(0, -1);
+}
+
+function calculate() {
+    try {
+        let expression = document.getElementById("ans").value;
+        let result = eval(expression);
+        document.getElementById("ans").value = result;
+    } catch {
+        document.getElementById("ans").value = "Error";
+    }
+}
+
+// Keyboard support 🔥
+document.addEventListener("keydown", function(e) {
+    let key = e.key;
+
+    if (!isNaN(key) || "+-*/.%".includes(key)) {
+        appendValue(key);
+    } else if (key === "Enter") {
+        calculate();
+    } else if (key === "Backspace") {
+        deleteLast();
+    }
+});
+</script>
+</body>
 </html>
